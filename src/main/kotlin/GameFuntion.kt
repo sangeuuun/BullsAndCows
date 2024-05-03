@@ -14,7 +14,7 @@ class GameFunction {
                     println("< 숫자 야구 게임을 종료합니다 >")
                     return
                 }
-                else -> println("올바른 숫자를 입력해주세요!")
+                else -> println("올바른 숫자를 입력해주세요!\n")
             }
         }
     }
@@ -30,8 +30,7 @@ class GameFunction {
     fun startGame() {
         var cnt = 0
         val answer = createAnswer().joinToString("")
-        println("")
-        println("< 게임을 시작합니다 >")
+        println("\n< 게임을 시작합니다 >")
         while (true) {
             try {
                 println("숫자를 입력하세요")
@@ -45,8 +44,7 @@ class GameFunction {
 
 
             } catch (e: NumberFormatException) {
-                println("올바르지 않은 입력값입니다")
-                println("")
+                println("올바르지 않은 입력값입니다\n")
                 continue
             }
         }
@@ -69,8 +67,7 @@ class GameFunction {
 
     fun checkAnswer(answer:String, input:String): Boolean {
         if (answer == input) {
-            println("정답입니다!")
-            println("")
+            println("정답입니다!\n")
             return true
         }
 
@@ -87,19 +84,17 @@ class GameFunction {
         }
 
         if (strike == 0 && ball == 0) {
-            println("Nothing")
-            println("")
+            println("Nothing\n")
             return false
         }
 
-        println("${strike}스트라이크 ${ball}볼")
-        println("")
+        println("${strike}스트라이크 ${ball}볼\n")
         return false
 
     }
     fun viewGameHistory() {
-        println("")
-        println("< 게임 기록 보기 >")
+        println()
+        println("\n< 게임 기록 보기 >")
         if (gameHistory.isEmpty()) println("게임 기록이 없습니다.")
         gameHistory.forEachIndexed { index, it -> println("${index+1}번째 게임 : 시도 횟수 - $it")}
 
