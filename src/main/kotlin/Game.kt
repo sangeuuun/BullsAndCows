@@ -1,7 +1,7 @@
 package org.example
 
-class GameFunction {
-    var gameHistory = mutableListOf<Int>()
+class Game {
+    private var gameHistory = mutableListOf<Int>()
 
     fun start() {
         while (true) {
@@ -18,7 +18,7 @@ class GameFunction {
             }
         }
     }
-    fun getMenuNum():String {
+    private fun getMenuNum():String {
         println("환영합니다! 원하시는 번호를 입력해주세요")
         println("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
 
@@ -27,7 +27,7 @@ class GameFunction {
         return menuInput
     }
 
-    fun startGame() {
+    private fun startGame() {
         var cnt = 0
         val answer = createAnswer().joinToString("")
         println("\n< 게임을 시작합니다 >")
@@ -36,7 +36,7 @@ class GameFunction {
                 println("숫자를 입력하세요")
                 val input = readln()
 
-                if (answer.length != input.toSet().size || input[0] == '0') {
+                if (answer.length != input.toSet().size || input[0] == '0' || input.all{it.isDigit()} == false) {
                     throw NumberFormatException()
                 }
                 cnt++
@@ -51,7 +51,7 @@ class GameFunction {
         gameHistory.add(cnt)
     }
 
-    fun createAnswer():MutableSet<Int> {
+    private fun createAnswer():MutableSet<Int> {
         val answer = mutableSetOf<Int>()
 
         while (answer.size < 3) {
@@ -65,7 +65,7 @@ class GameFunction {
         return answer
     }
 
-    fun checkAnswer(answer:String, input:String): Boolean {
+    private fun checkAnswer(answer:String, input:String): Boolean {
         if (answer == input) {
             println("정답입니다!\n")
             return true
@@ -92,7 +92,7 @@ class GameFunction {
         return false
 
     }
-    fun viewGameHistory() {
+    private fun viewGameHistory() {
         println()
         println("\n< 게임 기록 보기 >")
         if (gameHistory.isEmpty()) println("게임 기록이 없습니다.")

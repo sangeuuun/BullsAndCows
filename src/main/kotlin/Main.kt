@@ -1,8 +1,6 @@
 package org.example
 
 fun main() {
-    val game = GameFunction()
+    val game = Game()
     game.start()
-
-
 }
