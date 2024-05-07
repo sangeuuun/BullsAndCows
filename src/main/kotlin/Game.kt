@@ -36,7 +36,7 @@ class Game {
                 println("숫자를 입력하세요")
                 val input = readln()
 
-                if (answer.length != input.toSet().size || input[0] == '0' || input.all{it.isDigit()} == false) {
+                if (inputException(input, answer)) {
                     throw NumberFormatException()
                 }
                 cnt++
@@ -63,6 +63,14 @@ class Game {
             }
         }
         return answer
+    }
+
+    private fun inputException(input:String, answer: String):Boolean {
+        if (!input.all{it.isDigit()}) return true
+        if (answer.length != input.toSet().size) return true
+        if (input[0] == '0') return true
+
+        return false
     }
 
     private fun checkAnswer(answer:String, input:String): Boolean {
